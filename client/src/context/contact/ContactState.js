@@ -3,7 +3,7 @@ import uuid from 'uuid';
 import ContactContext  from './contactContext';
 import  contactReducer from './contactReducer';
 import {
-    ADD_Contact,
+    ADD_CONTACT,
     DELETE_CONTACT,
     SET_CURRENT,
     CLEAR_CURRENT,
@@ -35,17 +35,24 @@ const ContactState = props => {
             email: 'andy@gmail.com',
             phone: '5615585455',
             type: 'professional'
-        }]
+        }],
+
+        current: null
+
 
     };
     const [state, dispatch] = useReducer(contactReducer, initialState);
 
     //Add Contact Action 
+    const addContact = contact => {
+        contact.id = uuid.v4();
+        dispatch({type: ADD_CONTACT, payload: contact})
+    }
 
     //Delete Contact Action 
-
+    const deleteContact = id => dispatch({type: DELETE_CONTACT, payload: id })
     //Set Current Contact Action 
-
+    
     //Clear Current Contact Action
 
     //Update Contact Action
@@ -56,7 +63,9 @@ const ContactState = props => {
 
     return (
     <ContactContext.Provider value={{
-        contacts: state.contacts
+        contacts: state.contacts,
+        addContact,
+        deleteContact
         }}>
             {props.children}
         </ContactContext.Provider>
