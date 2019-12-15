@@ -390,7 +390,7 @@ table th {
 }
 .item-enter-active {
   opacity: 1;
-  transition: opacity 1000ms ease-in;
+  transition: opacity 500ms ease-in;
 }
 .item-exit {
   opacity: 1;
