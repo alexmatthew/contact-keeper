@@ -2,7 +2,11 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const connectDB = require("./config/db");
+const cors = require('cors')
 
+
+//enable cors 
+app.use(cors())
 //Connect to database
 connectDB();
 

@@ -39,6 +39,7 @@ const Register = () => {
                 email,
                 password
             })    
+            console.log('this passed')
         }
         
     }
